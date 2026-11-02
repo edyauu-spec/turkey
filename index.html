@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1D3A78">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="土耳其">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>土耳其之旅</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="lock" class="lock">
+  <form id="lf" autocomplete="off">
+    <div class="logo" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 6c-11 0-19 8-19 18 0 9 7 15 12 22h14c5-7 12-13 12-22C51 14 43 6 32 6z" fill="#F09A62"/><path d="M32 6c-6 4-9 10-9 18s4 15 7 22h4c3-7 7-14 7-22S38 10 32 6z" fill="#FFF4E5"/><path d="M32 6c-2 5-3 11-3 18s1 15 3 22" stroke="#4FC4BC" stroke-width="5" fill="none"/><path d="M25 46l3 6M39 46l-3 6" stroke="#fff" stroke-width="1.6"/><rect x="27" y="52" width="10" height="7" rx="2" fill="#B4531A"/></svg></div>
+    <h1>土耳其之旅</h1>
+    <p class="sub">輸入密碼開啟行程</p>
+    <input id="pw" type="password" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="密碼" aria-label="密碼" required>
+    <label class="rem"><input id="rem" type="checkbox" checked> 在這部手機記住</label>
+    <button type="submit" id="go">開啟</button>
+    <p id="err" class="err" role="alert"></p>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="top">
+    <div class="brand">土耳其之旅 <small>2026.10.25–11.07</small></div>
+    <div id="now" class="now" aria-live="polite"></div>
+  </header>
+  <main>
+    <section id="tab-today" class="pane" aria-label="今日">
+      <div id="car" class="car" tabindex="0" role="region" aria-label="每日行程，可左右滑動"></div>
+      <div class="dock"><div id="dots" class="dots"></div>
+      <button id="back" class="pill" type="button" hidden>回到今天</button></div>
+    </section>
+    <section id="tab-itin" class="pane" hidden aria-label="行程"><div id="itin"></div></section>
+    <section id="tab-book" class="pane" hidden aria-label="預訂與待辦"><div id="book"></div></section>
+    <section id="tab-map" class="pane" hidden aria-label="地圖"><div id="mapbox"></div></section>
+    <section id="tab-budget" class="pane" hidden aria-label="預算"><div id="budget"></div></section>
+    <section id="tab-more" class="pane" hidden aria-label="更多">
+      <div class="seg" role="tablist">
+        <button type="button" data-sub="tips" class="on">小貼士</button>
+        <button type="button" data-sub="phr">常用語</button>
+        <button type="button" data-sub="wx">天氣</button>
+        <button type="button" data-sub="me">安裝</button>
+      </div>
+      <div id="sub-tips" class="sub"></div>
+      <div id="sub-phr" class="sub" hidden></div>
+      <div id="sub-wx" class="sub" hidden></div>
+      <div id="sub-me" class="sub" hidden></div>
+    </section>
+  </main>
+  <nav class="tabs" id="tabs" aria-label="主選單">
+    <button type="button" data-tab="today" class="on"><i><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></i><span>今日</span></button>
+    <button type="button" data-tab="itin"><i><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg></i><span>行程</span></button>
+    <button type="button" data-tab="book"><i><svg viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 6v12" stroke-dasharray="2 2.4"/></svg></i><span>預訂</span></button>
+    <button type="button" data-tab="map"><i><svg viewBox="0 0 24 24"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6z"/><path d="M9 4v14M15 6v14"/></svg></i><span>地圖</span></button>
+    <button type="button" data-tab="budget"><i><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18"/><circle cx="16.5" cy="14.5" r="1.2"/></svg></i><span>預算</span></button>
+    <button type="button" data-tab="more"><i><svg viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18.5" cy="12" r="1.6"/></svg></i><span>更多</span></button>
+  </nav>
+</div>
+<noscript><p style="padding:24px">需要開啟 JavaScript 才能使用這個行程 App。</p></noscript>
+<script src="app.js" defer></script>
+</body>
+</html>
